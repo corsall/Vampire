@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     Vector3 movementVector;
 
@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
         movementVector.y = Input.GetAxisRaw("Vertical");
 
         movementVector *= speed;
-
         rb.velocity = movementVector;  
     }
 }
