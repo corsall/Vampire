@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
+    private Vector3 movementVector;
+    [SerializeField] float speed = 15f;
 
-    Vector3 movementVector;
-
-    [SerializeField] float speed = 2f;
-    private void MovemnentSets()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        movementVector = new Vector3();
+        rb = this.GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
         movementVector.x = Input.GetAxisRaw("Horizontal");
         movementVector.y = Input.GetAxisRaw("Vertical");
-
-        movementVector *= speed;
-        rb.velocity = movementVector;  
+        
+        rb.velocity = movementVector.normalized * speed;
     }
 }
