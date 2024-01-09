@@ -6,7 +6,6 @@ using UnityEngine;
 public class Orbital_Sword_Script : MonoBehaviour
 {
     private GameObject player;
-    private Vector3 currentPlayerPosition = Vector3.zero;
     [SerializeField] private float radius = 8.0f;
     [SerializeField] private float rotationSpeed = 450.0f;
     [SerializeField] private float orbitalSpeed = 2.0f;
@@ -19,17 +18,17 @@ public class Orbital_Sword_Script : MonoBehaviour
 
     void Update()
     {
-        //Знаходжу позицію гравця
-        currentPlayerPosition = player.transform.position;
+        //Знаходжу позицію гравця в даний момент часу
+        Vector3 currentPlayerPosition = player.transform.position;
 
         //Кручу об'єкт за певною орбітою в часі
-        UpdateOrbitalPosition();
+        UpdateOrbitalPosition(currentPlayerPosition);
 
         //Задаю в часі крутіння меча
         UpdateSwordRotation();
     }
 
-    void UpdateOrbitalPosition()
+    void UpdateOrbitalPosition(Vector3 currentPlayerPosition)
     {
         float offsetX = Mathf.Sin(Time.time * orbitalSpeed);
         float offsetY = Mathf.Cos(Time.time * orbitalSpeed);
