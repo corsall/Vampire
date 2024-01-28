@@ -16,20 +16,24 @@ public class AttackOnCollision : MonoBehaviour
     }
 
     // Damage checks
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if((this.objectTag == "Enemy" || this.objectTag == "Enemy Weapon") && collision.gameObject.tag == "Player")
         {
-            playerHealth.Damage(damage);
+            Attack(playerHealth, collision);
         }
         else if((this.objectTag == "Enemy" || this.objectTag == "Enemy Weapon") && collision.gameObject.tag == "Ally")
         {
-            collision.gameObject.GetComponent<HealthSystem>().Damage(damage);
+            Attack(collision.gameObject.GetComponent<HealthSystem>(), collision);
         }
         else if ((this.objectTag == "Ally" || this.objectTag == "Ally Weapon") && collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<HealthSystem>().Damage(damage);
-            Debug.Log(collision.gameObject.GetComponent<HealthSystem>().GetHealth());
+            Attack(collision.gameObject.GetComponent<HealthSystem>(), collision);
         }
+    }
+
+    protected virtual void Attack(HealthSystem healthSystem, Collider2D collision)
+    {
+        healthSystem.Damage(damage);
     }
 }

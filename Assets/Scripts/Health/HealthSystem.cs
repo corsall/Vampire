@@ -33,6 +33,10 @@ public class HealthSystem : MonoBehaviour
         {
             health = 0;
         }
+        if(health == 0 && this.gameObject.tag != "Player")
+        {
+            Destroy(this.gameObject);
+        }
 
         if (OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
     }
