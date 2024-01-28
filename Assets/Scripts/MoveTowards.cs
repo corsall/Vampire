@@ -7,7 +7,7 @@ public class MoveTowards : MonoBehaviour
     private GameObject player;
     private Rigidbody2D my_rigidbody2D;
     [SerializeField] private float speed = 10.0f;
-    [SerializeField] private float radiusToForget = 2f;
+    [SerializeField] private float radiusToForget = 5f;
     void Start()
     {
         //Знаходжу об'єкт гравця
@@ -24,6 +24,10 @@ public class MoveTowards : MonoBehaviour
         if (toPlayerVector.magnitude >= radiusToForget)
         {
             my_rigidbody2D.velocity = toPlayerVectorNormalized * speed;
+        }
+        else
+        {
+            my_rigidbody2D.velocity = Vector2.zero;
         }
     }
 }

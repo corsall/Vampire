@@ -23,17 +23,17 @@ public class HealthSystem : MonoBehaviour
 
     public float GetHealthPercent()
     {
-        return health / healthMax * 100f;
+        return (health / healthMax) * 100f;
     }
 
     public void Damage(float damageAmount)
     {
-        Debug.Log("Damage: " + damageAmount);
         health -= damageAmount;
         if (health < 0)
         {
             health = 0;
         }
+
         if (OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
     }
 
@@ -44,6 +44,7 @@ public class HealthSystem : MonoBehaviour
         {
             health = healthMax;
         }
+
         if (OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
     }
 }
