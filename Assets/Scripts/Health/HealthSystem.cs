@@ -10,12 +10,6 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private float health = 100f;
     [SerializeField] private float healthMax = 100f;
 
-    public HealthSystem(float healthMax)
-    {
-        this.healthMax = healthMax;
-        this.health = healthMax;
-    }
-
     public float GetHealth()
     {
         return health;
@@ -26,7 +20,7 @@ public class HealthSystem : MonoBehaviour
         return (health / healthMax) * 100f;
     }
 
-    public void Damage(float damageAmount)
+    public virtual void Damage(float damageAmount)
     {
         health -= damageAmount;
         if (health < 0)
