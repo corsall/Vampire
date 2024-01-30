@@ -25,21 +25,27 @@ public class PlayerMovement : MonoBehaviour
 
         //get angle of movement angle if up is 0 degrees
         float angle = Mathf.Atan2(my_rigidbody2D.velocity.y, my_rigidbody2D.velocity.x) * Mathf.Rad2Deg;
-        
-        //Work in progress
-        if(my_rigidbody2D.velocity.magnitude >= 0.01)
+
+        //Work in progress Stupid way to do it
+        if (my_rigidbody2D.velocity.magnitude >= 0.01)
         {
-            if(angle < -40  && angle > -140)
+            if (angle < -40 && angle > -140)
             {
-                my_animator.SetTrigger("isRunningDown");
+                my_animator.SetBool("isRunningDown", true);
+                my_animator.SetBool("isRunningUp", false);
+                my_animator.SetBool("isRunningHorizontal", false);
             }
-            else if(angle > 40 && angle < 140)
+            else if (angle > 40 && angle < 140)
             {
-                my_animator.SetTrigger("isRunningUp");
+                my_animator.SetBool("isRunningUp", true);
+                my_animator.SetBool("isRunningDown", false);
+                my_animator.SetBool("isRunningHorizontal", false);
             }
             else
-            {
-                my_animator.SetTrigger("isRunningHorizontal");
+            {   
+                my_animator.SetBool("isRunningHorizontal", true);
+                my_animator.SetBool("isRunningUp", false);
+                my_animator.SetBool("isRunningDown", false);
             }
         }
     }
