@@ -16,7 +16,7 @@ public class MoveTowards : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         //Вектор від об'єкта що володіє цим класом до гравця
         Vector3 toPlayerVector = player.transform.position - this.transform.position;
