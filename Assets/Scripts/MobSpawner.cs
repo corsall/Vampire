@@ -10,11 +10,6 @@ public class MobSpawner : MonoBehaviour
     private float spawnTimer = 0f;
     [SerializeField] private float spawnInterval = 1f;
 
-    void Start()
-    {
-        SpawnEnemies();
-    }
-
     private void Update()
     {
         spawnTimer += Time.deltaTime;
