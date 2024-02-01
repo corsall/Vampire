@@ -40,11 +40,13 @@ public class BehaviorBigSword : MonoBehaviour
         }
         if (cooldown.isCoolingDown)
         {
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
             UpdateSwordRotation();
         }
         else 
         {
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
 
