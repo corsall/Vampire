@@ -2,20 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class BehaviorOrbitalSwordScript : MonoBehaviour
+public class BehaviourFireZone : MonoBehaviour
 {
     private GameObject player;
-    [SerializeField] private float radius = 8.0f;
-    [SerializeField] private float rotationSpeed = 450.0f;
-    [SerializeField] private float orbitalSpeed = 2.0f;
+    //[SerializeField] private float radius = 8.0f;
+    [SerializeField] private float orbitalSpeed = 1.0f;
+    [SerializeField] private float radius = 3.0f;
 
     void Start()
     {
-        //Знаходжу об'єкт гравця
         player = GameObject.FindWithTag("Player");
     }
 
+    // Update is called once per frame
     void Update()
     {
         //Знаходжу позицію гравця в даний момент часу
@@ -24,8 +23,10 @@ public class BehaviorOrbitalSwordScript : MonoBehaviour
         //Кручу об'єкт за певною орбітою в часі
         UpdateOrbitalPosition(currentPlayerPosition);
 
-        //Задаю в часі крутіння меча
-        UpdateSwordRotation();
+        Vector2 direction = (Vector2)currentPlayerPosition - (Vector2)this.transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
+        this.transform.rotation = rotation;
     }
 
     void UpdateOrbitalPosition(Vector3 currentPlayerPosition)
@@ -36,10 +37,5 @@ public class BehaviorOrbitalSwordScript : MonoBehaviour
         Vector3 OrbitalPosition = new Vector3(currentPlayerPosition.x + radius * offsetX, currentPlayerPosition.y + radius * offsetY, currentPlayerPosition.z);
 
         this.transform.position = OrbitalPosition;
-    }
-
-    void UpdateSwordRotation()
-    {
-        this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -Time.time * rotationSpeed));
     }
 }
