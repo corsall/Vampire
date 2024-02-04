@@ -6,14 +6,9 @@ using UnityEngine.UIElements;
 public class BehaviourFireZone : MonoBehaviour
 {
     private GameObject player;
-    //[SerializeField] private float radius = 8.0f;
-    [SerializeField] private float orbitalSpeed = 1.0f;
-    [SerializeField] private float radius = 3.0f;
+    [SerializeField] private float radius = 4.0f;
     private Vector3 currentPlayerPosition;
 
-    [SerializeField]
-    [Range(0, 1)]
-    float t = 0;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -25,7 +20,7 @@ public class BehaviourFireZone : MonoBehaviour
         this.currentPlayerPosition = player.transform.position;
 
         RotateTowardsPlayer();
-        Debug.Log(Time.time);
+        RotateTowardsMouseOrbitally();
     }
 
     void RotateTowardsPlayer()
@@ -37,8 +32,9 @@ public class BehaviourFireZone : MonoBehaviour
         this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle_towards_player));
     }
 
-    void RotateOrbitally(float radian)
+    void RotateOrbitallyByAngle(float angle)
     {
+        float radian = angle / Mathf.Rad2Deg;
         float offsetX = Mathf.Sin(radian);
         float offsetY = Mathf.Cos(radian);
 
@@ -46,5 +42,15 @@ public class BehaviourFireZone : MonoBehaviour
         Vector3 OrbitalPosition = new Vector3(currentPlayerPosition.x + radius * offsetX, currentPlayerPosition.y + radius * offsetY, currentPlayerPosition.z);
 
         this.transform.position = OrbitalPosition;
+    }
+
+    void RotateTowardsMouseOrbitally()
+    {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouseToPlayerVector = currentPlayerPosition - mousePos;
+
+        float angle = Mathf.Atan2(mouseToPlayerVector.y, mouseToPlayerVector.x) * Mathf.Rad2Deg * -1 - 90;
+        Debug.Log(angle);
+        RotateOrbitallyByAngle(angle);
     }
 }

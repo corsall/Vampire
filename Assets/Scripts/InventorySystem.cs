@@ -14,9 +14,8 @@ public class InventorySystem : MonoBehaviour
         for (int i = 0; i < inventoryItems.Count; i++)
         {
             inventoryItems[i] = SpawnItem(inventoryItems[i]);
+            inventoryItems[i].SetActive(false);
         }
-
-        AddItem(Resources.Load<GameObject>("Frog_Enemy"));
     }
 
     void Update()
