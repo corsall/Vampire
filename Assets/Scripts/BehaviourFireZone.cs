@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BehaviourFireZone : MonoBehaviour
 {
@@ -8,7 +9,11 @@ public class BehaviourFireZone : MonoBehaviour
     //[SerializeField] private float radius = 8.0f;
     [SerializeField] private float orbitalSpeed = 1.0f;
     [SerializeField] private float radius = 3.0f;
+    private Vector3 currentPlayerPosition;
 
+    [SerializeField]
+    [Range(0, 1)]
+    float t = 0;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -17,22 +22,26 @@ public class BehaviourFireZone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Знаходжу позицію гравця в даний момент часу
-        Vector3 currentPlayerPosition = player.transform.position;
+        this.currentPlayerPosition = player.transform.position;
 
-        //Кручу об'єкт за певною орбітою в часі
-        UpdateOrbitalPosition(currentPlayerPosition);
-
-        Vector2 direction = (Vector2)currentPlayerPosition - (Vector2)this.transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
-        this.transform.rotation = rotation;
+        RotateTowardsPlayer();
+        Debug.Log(Time.time);
     }
 
-    void UpdateOrbitalPosition(Vector3 currentPlayerPosition)
+    void RotateTowardsPlayer()
     {
-        float offsetX = Mathf.Sin(Time.time * orbitalSpeed);
-        float offsetY = Mathf.Cos(Time.time * orbitalSpeed);
+        Vector3 dirrection = (currentPlayerPosition - this.transform.position).normalized;
+
+        float angle_towards_player = Mathf.Atan2(dirrection.y, dirrection.x) * Mathf.Rad2Deg + 90;
+
+        this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle_towards_player));
+    }
+
+    void RotateOrbitally(float radian)
+    {
+        float offsetX = Mathf.Sin(radian);
+        float offsetY = Mathf.Cos(radian);
+
 
         Vector3 OrbitalPosition = new Vector3(currentPlayerPosition.x + radius * offsetX, currentPlayerPosition.y + radius * offsetY, currentPlayerPosition.z);
 
