@@ -1,13 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
 {
+    public event EventHandler OnActiveItemChanged;
+
     [SerializeField]
     private List<GameObject> inventoryItems;
     private GameObject itemInHand;
     private int itemInHandIndex;
+
 
     void Start()
     {
@@ -42,6 +46,8 @@ public class InventorySystem : MonoBehaviour
         this.itemInHand = newItem;
         DeactivateAllItems();
         this.itemInHand.SetActive(true);
+
+        OnActiveItemChanged.Invoke(this, EventArgs.Empty);
     }
 
     private void DeactivateAllItems()
@@ -60,6 +66,11 @@ public class InventorySystem : MonoBehaviour
     public void RemoveItem(GameObject itemToRemove)
     {
         inventoryItems.Remove(itemToRemove);
+    }
+
+    public GameObject GetActiveItem()
+    {
+        return this.itemInHand;
     }
 
     /// <summary>

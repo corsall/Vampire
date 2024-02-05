@@ -50,7 +50,6 @@ public class BehaviourFireZone : MonoBehaviour
         Vector3 mouseToPlayerVector = currentPlayerPosition - mousePos;
 
         float angle = Mathf.Atan2(mouseToPlayerVector.y, mouseToPlayerVector.x) * Mathf.Rad2Deg * -1 - 90;
-        Debug.Log(angle);
         RotateOrbitallyByAngle(angle);
     }
 }
