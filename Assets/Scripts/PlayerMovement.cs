@@ -23,6 +23,16 @@ public class PlayerMovement : MonoBehaviour
         movementVector.x = Input.GetAxisRaw("Horizontal");
         movementVector.y = Input.GetAxisRaw("Vertical");
 
+        AnimatePlayer();
+    }
+
+    void FixedUpdate()
+    {
+        my_rigidbody2D.velocity = movementVector.normalized * speed;
+    }
+
+    private void AnimatePlayer()
+    {
         float angle = Mathf.Atan2(movementVector.y, movementVector.x) * Mathf.Rad2Deg;
 
         if (movementVector.x < 0)
@@ -53,10 +63,5 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.ChangeAnimation("player_idle");
         }
-    }
-
-    void FixedUpdate()
-    {
-        my_rigidbody2D.velocity = movementVector.normalized * speed;
     }
 }
