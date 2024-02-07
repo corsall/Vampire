@@ -7,8 +7,10 @@ public class MoveTowards : MonoBehaviour
 {
     private GameObject player;
     private Rigidbody2D rb;
-    private float maxSpeed = 5.0f;
     private float force = 20.0f;
+    private float maxSpeed = 5.0f;
+    private float radius = 4.0f;
+    private float crowdForce = 30.0f;
     void Start()
     {   
         player = GameObject.FindWithTag("Player");
@@ -22,6 +24,19 @@ public class MoveTowards : MonoBehaviour
     {
         Vector3 directionToPlayer = (player.transform.position - this.transform.position).normalized;
         Vector2 velocityToAchieve = directionToPlayer * maxSpeed;
+
+        List<GameObject> nearestObjects = GetNearestObjects(this.transform.position, radius);
+
+        //Apply force to move this object from other objects
+        foreach (GameObject obj in nearestObjects)
+        {
+            if (obj != this.gameObject)
+            {
+                Vector3 directionToObject = (obj.transform.position - this.transform.position).normalized;
+                Vector2 forceToApply = directionToObject * crowdForce;
+                rb.AddForce(-forceToApply);
+            }
+        }
 
 
         if (rb.velocity.magnitude < maxSpeed)
@@ -47,5 +62,23 @@ public class MoveTowards : MonoBehaviour
     private void ConfigureRigidBody()
     {
         rb.gravityScale = 0;
+    }
+
+    public List<GameObject> GetNearestObjects(Vector3 position, float maxRange)
+    {
+        GameObject[] crowd = GameObject.FindGameObjectsWithTag(tag);
+        List<GameObject> nearestCrowd = new List<GameObject>();
+        if (crowd == null)
+        {
+            return null;
+        }
+        foreach (GameObject obj in crowd)
+        {
+            if (Vector3.Distance(obj.transform.position, position) <= maxRange)
+            {
+                nearestCrowd.Add(obj);
+            }
+        }
+        return nearestCrowd;
     }
 }

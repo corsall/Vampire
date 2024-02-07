@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2755410484636014034}
   - component: {fileID: 5367480507434418987}
   - component: {fileID: -4139885163478588271}
+  - component: {fileID: -4573800177602689470}
   m_Layer: 0
   m_Name: Fire_Zone
   m_TagString: Ally Weapon
@@ -161,5 +162,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0c690669b9de940a2baae7098ad1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockback: 100
-  knockbackTime: 2
+  knockback: 2
+  knockbackTime: 0.2
+--- !u!95 &-4573800177602689470
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692470777679496341}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
