@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8174612192780137645}
   - component: {fileID: 2755410484636014034}
   - component: {fileID: 5367480507434418987}
-  - component: {fileID: 1692724360236447662}
+  - component: {fileID: -4139885163478588271}
   m_Layer: 0
   m_Name: Fire_Zone
   m_TagString: Ally Weapon
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 4
---- !u!114 &1692724360236447662
+--- !u!114 &-4139885163478588271
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,7 +158,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 692470777679496341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24a6016e90eb7a84f95f3ef55b9158b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b0c690669b9de940a2baae7098ad1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  knockback: 100
+  knockbackTime: 2

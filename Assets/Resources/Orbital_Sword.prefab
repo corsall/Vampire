@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8355058426870694973}
   - component: {fileID: 5776695399575765833}
   - component: {fileID: 8740327599193616476}
+  - component: {fileID: -4247856135612461023}
   - component: {fileID: 3303901455572667559}
-  - component: {fileID: 6822536495731046354}
   m_Layer: 0
   m_Name: Orbital_Sword
   m_TagString: Ally Weapon
@@ -150,6 +150,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4247856135612461023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4052330937908026303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee173e54941881469d5840010e08bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
 --- !u!114 &3303901455572667559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,16 +178,3 @@ MonoBehaviour:
   radius: 8
   rotationSpeed: 450
   orbitalSpeed: 2
---- !u!114 &6822536495731046354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4052330937908026303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24a6016e90eb7a84f95f3ef55b9158b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10

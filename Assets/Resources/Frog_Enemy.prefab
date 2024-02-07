@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 515962559144991025}
   - component: {fileID: 7226817694368693101}
   - component: {fileID: 1636339183173113511}
-  - component: {fileID: 8317373401042170649}
+  - component: {fileID: 3804950754201299796}
   - component: {fileID: 4963105453282355976}
   m_Layer: 0
   m_Name: Frog_Enemy
@@ -164,9 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9139cf60e45ce7c4cbd6ebc111ad8cce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  radiusToForget: 5
---- !u!114 &8317373401042170649
+--- !u!114 &3804950754201299796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,7 +173,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 65223336730353901}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24a6016e90eb7a84f95f3ef55b9158b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ee173e54941881469d5840010e08bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
