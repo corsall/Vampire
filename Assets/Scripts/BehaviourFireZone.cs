@@ -14,7 +14,6 @@ public class BehaviourFireZone : MonoBehaviour
         player = GameObject.FindWithTag("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
         this.currentPlayerPosition = player.transform.position;
@@ -32,6 +31,10 @@ public class BehaviourFireZone : MonoBehaviour
         this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle_towards_player));
     }
 
+    /// <summary>
+    /// Rotate object orbitally by some angle. Current object will be rotated around player
+    /// </summary>
+    /// <param name="angle"></param>
     void RotateOrbitallyByAngle(float angle)
     {
         float radian = angle / Mathf.Rad2Deg;

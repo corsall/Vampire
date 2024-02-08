@@ -3,31 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthSystem : MonoBehaviour
+abstract public class HealthSystem : MonoBehaviour
 {
     public event EventHandler OnHealthChanged;
 
-    [SerializeField] private float health = 100f;
-    [SerializeField] private float healthMax = 100f;
-
-    public float GetHealth()
-    {
-        return health;
-    }
+    abstract public float Health { get; protected set; }
+    abstract public float HealthMax { get; protected set; }
 
     public float GetHealthPercent()
     {
-        return (health / healthMax) * 100f;
+        return (Health / HealthMax) * 100f;
     }
 
     public virtual void Damage(float damageAmount)
     {
-        health -= damageAmount;
-        if (health < 0)
+        Health -= damageAmount;
+        if (Health < 0)
         {
-            health = 0;
+            Health = 0;
         }
-        if(health == 0 && this.gameObject.tag != "Player")
+        if(Health == 0 && this.gameObject.tag != "Player")
         {
             Destroy(this.gameObject);
         }
@@ -35,12 +30,12 @@ public class HealthSystem : MonoBehaviour
         if (OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
     }
 
-    public void Heal(float healAmount)
+    public virtual void Heal(float healAmount)
     {
-        health += healAmount;
-        if (health > healthMax)
+        Health += healAmount;
+        if (Health > HealthMax)
         {
-            health = healthMax;
+            Health = HealthMax;
         }
 
         if (OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);

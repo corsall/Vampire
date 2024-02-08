@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7226817694368693101}
   - component: {fileID: 1636339183173113511}
   - component: {fileID: 3804950754201299796}
-  - component: {fileID: 4963105453282355976}
+  - component: {fileID: 890761345412926624}
   m_Layer: 0
   m_Name: Frog_Enemy
   m_TagString: Enemy
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
---- !u!114 &4963105453282355976
+--- !u!114 &890761345412926624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,11 +186,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 65223336730353901}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ee8a0a0538d21045970391b581e3aa1, type: 3}
+  m_Script: {fileID: 11500000, guid: ed6e336b1b0274a4d8c0a99e76d9d1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
-  healthMax: 50
 --- !u!1 &3439931923555649358
 GameObject:
   m_ObjectHideFlags: 0

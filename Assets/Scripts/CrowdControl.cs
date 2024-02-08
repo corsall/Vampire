@@ -4,44 +4,59 @@ using UnityEngine;
 
 public class CrowdControl : MonoBehaviour
 {
-    private static List<GameObject> crowd;
+    private List<GameObject> crowd;
+    [SerializeField] private float crowdForce = 5.0f;
+    [SerializeField] private float crowdPushDistance = 2.0f;
 
-    private void Start()
+    public void FixedUpdate()
     {
-        crowd = new List<GameObject>();
+        //Apply force onece every 10 frames
+        if (Time.frameCount % 10 == 0)
+        {
+            ApplyForce();
+        }
+    }
+
+    private void Awake()
+    {
+        this.crowd = new List<GameObject>();
     }
 
     public void AddToCrowd(GameObject gameObject)
     {
-        crowd.Add(gameObject);
+        this.crowd.Add(gameObject);
     }
 
-    // Find all objects for the crowd by tag
-    public void AddToCrowdByTag(string tag)
+    // Find all objects in parrent and update the crowd list
+    public void UpdateCrowd()
     {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
-        foreach (GameObject obj in objects)
+        this.crowd.Clear();
+        foreach (Transform child in transform)
         {
-            crowd.Add(obj);
+            this.crowd.Add(child.gameObject);
         }
     }
 
-    // For specified position and max range , find all objects for the crowd GET
-    public List<GameObject> AddToCrowdByPosition(Vector3 position, float maxRange)
+    // Calculate distance between all objects in the crowd
+
+    public void ApplyForce()
     {
-        List<GameObject> nearestCrowd =  new List<GameObject>();
-        if(crowd == null)
+        for (int i = 0; i < crowd.Count; i++)
         {
-            return null;
-        }
-        foreach (GameObject obj in crowd)
-        {
-            if (Vector3.Distance(obj.transform.position, position) <= maxRange)
+            for (int j = 0; j < crowd.Count; j++)
             {
-                nearestCrowd.Add(obj);
+                if (i != j)
+                {
+                    Vector3 distance = (crowd[i].transform.position - crowd[j].transform.position);
+
+                    if (distance.magnitude < crowdPushDistance)
+                    {
+                        Vector2 forceToApply = distance.normalized * crowdForce;
+                        crowd[j].GetComponent<Rigidbody2D>().AddForce(-forceToApply);
+                    }
+                }
             }
         }
-        return nearestCrowd;
     }
 
 }

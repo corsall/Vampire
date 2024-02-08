@@ -9,8 +9,7 @@ public class MoveTowards : MonoBehaviour
     private Rigidbody2D rb;
     private float force = 20.0f;
     private float maxSpeed = 5.0f;
-    private float radius = 4.0f;
-    private float crowdForce = 30.0f;
+
     void Start()
     {   
         player = GameObject.FindWithTag("Player");
@@ -25,18 +24,18 @@ public class MoveTowards : MonoBehaviour
         Vector3 directionToPlayer = (player.transform.position - this.transform.position).normalized;
         Vector2 velocityToAchieve = directionToPlayer * maxSpeed;
 
-        List<GameObject> nearestObjects = GetNearestObjects(this.transform.position, radius);
+        //List<GameObject> nearestObjects = GetNearestObjects(this.transform.position, radius);
 
-        //Apply force to move this object from other objects
-        foreach (GameObject obj in nearestObjects)
-        {
-            if (obj != this.gameObject)
-            {
-                Vector3 directionToObject = (obj.transform.position - this.transform.position).normalized;
-                Vector2 forceToApply = directionToObject * crowdForce;
-                rb.AddForce(-forceToApply);
-            }
-        }
+        ////Apply force to move this object from other objects
+        //foreach (GameObject obj in nearestObjects)
+        //{
+        //    if (obj != this.gameObject)
+        //    {
+        //        Vector3 directionToObject = (obj.transform.position - this.transform.position).normalized;
+        //        Vector2 forceToApply = directionToObject * crowdForce;
+        //        rb.AddForce(-forceToApply);
+        //    }
+        //}
 
 
         if (rb.velocity.magnitude < maxSpeed)

@@ -10,8 +10,6 @@ public class InventorySystem : MonoBehaviour
     [SerializeField]
     private List<GameObject> inventoryItems;
     private GameObject itemInHand;
-    private int itemInHandIndex;
-
 
     void Start()
     {
@@ -39,7 +37,7 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
-    public void ChangeItemInHand(GameObject newItem)
+    private void ChangeItemInHand(GameObject newItem)
     {
         if (this.itemInHand == newItem) return;
         
@@ -77,7 +75,7 @@ public class InventorySystem : MonoBehaviour
     /// Spawning item in the world creates new GameObject instance not the same as in param
     /// </summary>
     /// <param name="itemPrefab"></param>
-    public GameObject SpawnItem(GameObject itemPrefab)
+    private GameObject SpawnItem(GameObject itemPrefab)
     {
         GameObject spawnedItem = Instantiate(itemPrefab);
         spawnedItem.name = itemPrefab.name;

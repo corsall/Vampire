@@ -12,13 +12,11 @@ public class BehaviourOrbitalSwordScript : MonoBehaviour
 
     void Start()
     {
-        //Знаходжу об'єкт гравця
         player = GameObject.FindWithTag("Player");
     }
 
     void Update()
     {
-        //Знаходжу позицію гравця в даний момент часу
         Vector3 currentPlayerPosition = player.transform.position;
 
         //Кручу об'єкт за певною орбітою в часі

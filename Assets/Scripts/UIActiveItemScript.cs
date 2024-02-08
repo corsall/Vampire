@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class ActiveItemScript : MonoBehaviour
+public class UIActiveItemScript : MonoBehaviour
 {
     private InventorySystem inventory;
     private UnityEngine.UI.Image image;
