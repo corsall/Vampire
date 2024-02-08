@@ -9,6 +9,8 @@ public class MobSpawner : MonoBehaviour
 
     private float spawnTimer = 0f;
     [SerializeField] private float spawnInterval = 1f;
+    private int countObjectsSpawned = 0;
+    [SerializeField] private int maxObjectsToSpawn = 30;
 
     //private CrowdControl crowdManager;
 
@@ -20,7 +22,7 @@ public class MobSpawner : MonoBehaviour
     {
         spawnTimer += Time.deltaTime;
 
-        if (spawnTimer >= spawnInterval)
+        if (spawnTimer >= spawnInterval & countObjectsSpawned < maxObjectsToSpawn)
         {
             spawnTimer = 0f;
 
@@ -35,6 +37,7 @@ public class MobSpawner : MonoBehaviour
             GameObject enemy = Instantiate(enemyPrefab, new Vector3(transform.position.x + i * 2, transform.position.y + i * 2, transform.position.z + i * 2), Quaternion.identity, this.transform);
 
             enemy.name = "enemy" + (i + 1);
+            countObjectsSpawned++;
         }
         //crowdManager.UpdateCrowd();
     }

@@ -22,18 +22,12 @@ public class InventorySystem : MonoBehaviour
 
     void Update()
     {
-        // Це не найкращий спосіб, але працює
-        if (Input.GetKeyDown(KeyCode.Alpha1) && inventoryItems.Count > 0)
+        for (int i = 0; i < inventoryItems.Count; i++)
         {
-            ChangeItemInHand(inventoryItems[0]);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && inventoryItems.Count > 1)
-        {
-            ChangeItemInHand(inventoryItems[1]);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3) && inventoryItems.Count > 2)
-        {
-            ChangeItemInHand(inventoryItems[2]);
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i) && inventoryItems.Count > i)
+            {
+                ChangeItemInHand(inventoryItems[i]);
+            }
         }
     }
 

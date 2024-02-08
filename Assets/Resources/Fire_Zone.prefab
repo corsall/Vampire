@@ -117,7 +117,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0c690669b9de940a2baae7098ad1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockback: 2
+  knockback: 100
   knockbackTime: 0.2
 --- !u!95 &-4573800177602689470
 Animator:

@@ -7,13 +7,15 @@ public class MoveTowards : MonoBehaviour
 {
     private GameObject player;
     private Rigidbody2D rb;
-    private float force = 20.0f;
-    private float maxSpeed = 5.0f;
+    [SerializeField] private float force = 20.0f;
+    [SerializeField] private float maxSpeed = 5.0f;
 
     void Start()
     {   
         player = GameObject.FindWithTag("Player");
         rb = this.GetComponent<Rigidbody2D>();
+
+        this.GetComponent<Rigidbody2D>().freezeRotation = true;
 
         ConfigureRigidBody();
     }
