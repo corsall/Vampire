@@ -7,6 +7,7 @@ public class VoidAttack : AttackOnCollision
     [SerializeField] private float gravityForce = 5f;
     [SerializeField] private float gravityTime = 0.5f;
     [SerializeField] private float damage = 1000f;
+    [SerializeField] private float atackRadius = 2f;
     //private float coliderRadius;
     GameObject player;
 
@@ -26,7 +27,11 @@ public class VoidAttack : AttackOnCollision
             StartCoroutine(ApplyGravity(rigidbody2D));
         }
 
-        healthSystem.Damage(damage);
+        float distanceToObject = Vector2.Distance(this.transform.position, collision.transform.position);
+        if (distanceToObject < atackRadius)
+        {
+            healthSystem.Damage(damage);
+        }
     }
 
     IEnumerator ApplyGravity(Rigidbody2D rigidbody2D)
