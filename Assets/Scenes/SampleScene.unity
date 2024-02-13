@@ -955,9 +955,9 @@ GameObject:
   - component: {fileID: 1422034524}
   - component: {fileID: 1422034526}
   m_Layer: 0
-  m_Name: FrogSpawner
+  m_Name: MobSpawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -977,6 +977,7 @@ MonoBehaviour:
   numberOfEnemiesToSpawn: 10
   spawnInterval: 1
   maxObjectsToSpawn: 300
+  spawnRadius: 4
 --- !u!4 &1422034525
 Transform:
   m_ObjectHideFlags: 0

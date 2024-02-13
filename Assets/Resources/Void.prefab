@@ -159,6 +159,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityForce: 5
   gravityTime: 0.5
+  damage: 1000
+  atackRadius: 2
 --- !u!114 &6254262421705213377
 MonoBehaviour:
   m_ObjectHideFlags: 0
