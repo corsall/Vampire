@@ -137,11 +137,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1832494745748358683, guid: 2e0b70d4c7effb549b01cb3da26f0bf2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.698355
+      value: -22.56
       objectReference: {fileID: 0}
     - target: {fileID: 1832494745748358683, guid: 2e0b70d4c7effb549b01cb3da26f0bf2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.212077
+      value: -6.65
       objectReference: {fileID: 0}
     - target: {fileID: 1832494745748358683, guid: 2e0b70d4c7effb549b01cb3da26f0bf2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -301,11 +301,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7465999112011558025, guid: cda7c3435717e57428678469f7996799, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -30.418
+      value: -31.57
       objectReference: {fileID: 0}
     - target: {fileID: 7465999112011558025, guid: cda7c3435717e57428678469f7996799, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8848
+      value: -0.57
       objectReference: {fileID: 0}
     - target: {fileID: 7465999112011558025, guid: cda7c3435717e57428678469f7996799, type: 3}
       propertyPath: m_LocalPosition.z
@@ -974,10 +974,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 65223336730353901, guid: 2e0b70d4c7effb549b01cb3da26f0bf2, type: 3}
-  numberOfEnemiesToSpawn: 10
-  spawnInterval: 1
-  maxObjectsToSpawn: 300
-  spawnRadius: 4
+  waveSize: 5
+  spawnInterval: 0.1
+  rotationAngle: 15
+  maxObjectsToSpawn: 100
+  spawnRadius: 50
 --- !u!4 &1422034525
 Transform:
   m_ObjectHideFlags: 0
@@ -987,7 +988,7 @@ Transform:
   m_GameObject: {fileID: 1422034523}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.78, y: 4.71, z: -0.5907908}
+  m_LocalPosition: {x: -27.69, y: 0.09, z: -0.5907908}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
