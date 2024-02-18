@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BehaviourOrbitalSwordScript : MonoBehaviour
+public class OrbitalSwordController : MonoBehaviour
 {
     private GameObject player;
     [SerializeField] private float radius = 8.0f;

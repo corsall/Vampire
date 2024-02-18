@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class BehaviourBigSword : MonoBehaviour
+public class BigSwordController : MonoBehaviour
 {
     private GameObject player;
     private bool CDStart;

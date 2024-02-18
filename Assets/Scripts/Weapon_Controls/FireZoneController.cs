@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class BehaviourFireZone : MonoBehaviour
+public class FireZoneController : MonoBehaviour
 {
     private GameObject player;
     [SerializeField] private float radius = 4.0f;
